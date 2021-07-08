@@ -3,8 +3,14 @@
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
-
-/*
+import axios from 'axios'
+axios.get('https://api.github.com/users/jessejohns-1')
+  .then (data => {
+    
+    const myInfo = data.data;
+    
+  })
+    /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
     data in order to use it to build your component function
@@ -58,3 +64,57 @@ const followersArray = [];
     luishrd
     bigknell
 */
+const cDoc = document.querySelector('.cards');
+
+function cardMaker(obj) {
+
+  //creating my class elements
+  const myCard = document.createElement('div');
+  const image = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const myName = document.createElement('h3');
+  const userName = document.createElement('p');
+  const myLocation = document.createElement('p');
+  const myProfile = document.createElement('a');
+  const myFollowers = document.createElement('p');
+  const myFollowing = document.createElement('p');
+  const myBio = document.createElement('p');
+  
+  //creating my class lists
+  myCard.classList.add('card');
+  cardInfo.classList.add('card-info');
+  myName.classList.add('name');
+  userName.classList.add('username');
+
+//append children 
+myCard.appendChild(image)
+myCard.appendChild(cardInfo)
+cardInfo.appendChild(myName)
+cardInfo.appendChild(userName)
+cardInfo.appendChild(myLocation)
+cardInfo.appendChild(myProfile)
+cardInfo.appendChild(myFollowers)
+cardInfo.appendChild(myFollowing)
+cardInfo.appendChild(myBio)
+
+
+//text content
+
+image.src = obj.avatar_url
+    location.textContent = obj.location 
+    myName.textContent = obj.name
+    userName.textContent = obj.login 
+    const o = obj.url
+    profileLink.innerHTML = theProfileLink.link(obj.url)
+    myFollowers.textContent = `Followers: ${obj.followers}`
+    myFollowing.textContent = `Following: ${obj.following}`
+    bio.textContent = obj.bio 
+
+
+return myCard
+}
+
+
+
+
+
